@@ -1,3 +1,5 @@
+# -*- coding:utf-8 -*-
+
 import os
 
 # f1=cat svn.txt |paste -d ":" -s  
