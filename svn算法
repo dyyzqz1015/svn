@@ -1,0 +1,30 @@
+[qz@192 svn]$ cat svn.txt |grep -v "^$"  #去掉空格，^$
+
+
+[qz@192 svn]$ cat svn.txt |paste -d ":" -s 
+
+
+
+ 1 import os
+  2 
+  3 # f1=cat svn.txt |paste -d ":" -s  
+  4 
+  5 f=open('/home/qz/svn/svn') #打开文件
+  6 a=f.read() ＃读取文件
+  7 
+  8 #print "no split:\n",a
+  9 b=a[1:-3] ＃去头：，去尾三个
+c=b.split("::") ＃以：
+
+
+for i in range(0,len(c)):
+     print i
+     d=c[i].split(":")
+     print d
+
+
+
+
+
+
+

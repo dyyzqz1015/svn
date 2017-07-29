@@ -1,0 +1,8 @@
+[qz@192 svn]$ cat svn.txt |grep -v "^$"  #去掉空格，^$
+
+
+[qz@192 svn]$ cat svn.txt |paste -d ":" -s 
+
+
+
+
