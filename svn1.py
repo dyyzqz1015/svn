@@ -24,7 +24,7 @@ a=f.read()		#读取文档
 b=a[1:-3]		#将读出的内容进行去掉头的一个冒号和最后一个冒号以后的字符
 c=b.split("::")		#以两个冒号作为分隔符进行切分并放到C列表当中，将同库的用户名、权限放在一起
 
-print '%.15s %.015s %s'%("svn","username","accsee")		#用TAB来进行制表输出标题栏
+print '%20s %20s %20s'%("svn","username","accsee")		#用占位字来进行制表输出标题栏，20点位符
 
 count=0		#用来记数有多少库
 #有多少个目录，并将目录的权限列出来
@@ -37,7 +37,7 @@ while count<len(c): 	#计算目录的长度,当越过长度时结束，这一层
 		svn=d[0]		#将列表的第一个元素给SVN目录
 		username=d[j].split("=")[0]		#将用户名进行切片分离，并将分离开的第一元素给用户名
 		accsee=d[j].split("=")[1]		#将用户名进行切生分离，并将分离的第二个元素组权限
-		print '%.15s\t %15s\t %s\t '%(svn,username,accsee)		#依次输出目录、用户名、权限
+		print '%20s %20s %20s'%(svn,username,accsee)		#依次输出目录、用户名、权限，采用20个占位符进行格式输出
 	count=count+1 	#记录目录的标记进行累加
 
 f.close()		#关闭文档
