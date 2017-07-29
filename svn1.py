@@ -1,28 +1,44 @@
 # -*- coding:utf-8 -*-
+###########################################
 
-import os
+#		这是一个管理读取SVN读写配置文件的程序
+#		1.读取SVN权限配置文件用输出
+#		2.通过用户名查找库的权限
+#		3.通过库名查找到哪些出用户的权限
+#		处理过程：
+#		1.读取SVN的库下面配置权限文件
+#		2.将配置文件进行处理使用cat svn.txt |paste -d ":" -s >
+#		3.
+#     
+#	name:冰山
+#	email:dy_dyyzqz@163.com
+#	version:0.0.1
+###########################################
+import os #导入系统模块
 
-# f1=cat svn.txt |paste -d ":" -s  
+# cat svn.txt |paste -d ":" -s >svn			#将行转化为列空行使用两个冒号隔开，换行用一个冒号隔开  
 
-f=open('/home/qz/svn/svn') 
-a=f.read() 
+f=open('/home/qz/svn/svn')	#打开文档 
+a=f.read()		#读取文档
 #print "no split:\n",a
-b=a[1:-3]
-c=b.split("::")
+b=a[1:-3]		#将读出的内容进行去掉头的一个冒号和最后一个冒号以后的字符
+c=b.split("::")		#以两个冒号作为分隔符进行切分并放到C列表当中，将同库的用户名、权限放在一起
 
-print "\tsvn","\tusername","\taccsee"
+print '%.15s %.015s %s'%("svn","username","accsee")		#用TAB来进行制表输出标题栏
 
-count=0
-while count<len(c):
+count=0		#用来记数有多少库
+#有多少个目录，并将目录的权限列出来
+while count<len(c): 	#计算目录的长度,当越过长度时结束，这一层处理目录
 	
 
-	d=c[count].split(":")
-	for j in range(1,len(d)):	
+	d=c[count].split(":")		#从第一个目录起并以一个冒号分离出出来，依次给列表d
+	for j in range(1,len(d)):		#这一层处理目录里的账号以及账号权限，第一个是目录，账号是从第二个开始,依次读取账号及权限
 #		print d[0],d[j].split("=")[0],d[j].split("=")[1]
-		svn=d[0]
-		username=d[j].split("=")[0]
-		accsee=d[j].split("=")[1]
-		print svn,username,accsee
-	count=count+1
-f.close()
+		svn=d[0]		#将列表的第一个元素给SVN目录
+		username=d[j].split("=")[0]		#将用户名进行切片分离，并将分离开的第一元素给用户名
+		accsee=d[j].split("=")[1]		#将用户名进行切生分离，并将分离的第二个元素组权限
+		print '%.15s\t %15s\t %s\t '%(svn,username,accsee)		#依次输出目录、用户名、权限
+	count=count+1 	#记录目录的标记进行累加
+
+f.close()		#关闭文档
 
